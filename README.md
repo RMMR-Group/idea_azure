@@ -25,6 +25,12 @@ VMAutoSuspendAfterBuild=False
 VMStopInsteadOfSuspend=False
 ```
 
+### Support SMB Sharing of MIDEA to outside machines
+1. Within Windows Explorer, navigate to `C:\` and select `Properties` from the context menu of the `C:\MIDEA` directory. From inside that directory, enable sharing. You'll be notified that the VirtualBox subdirectory is already shared, and you should choose to not modify those sharing settings.
+1. Enable inbound port 445 in the Azure interface for your VM.
+1. Open Windows Defender Firewall and click `Allow an app or feature through Windows Defender Firewall`
+1. Enable `Private` and `Public` for both `File and Printer Sharing` and `File and Printer Sharing over SMBDirect`.
+
 ## Using the VM setup
 
 1. To reduce start/stop times for the Linux VM, we've turned of the auto-on/off feature. So, you need to manually run `vboxctrl -start` and `vboxctrl -stop` from wihin the IDEA shell to start/stop the Linux VM.
