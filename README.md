@@ -2,6 +2,8 @@
 
 Key point -- the Linux VM, nested inside Azure and then inside VirtualBox, is not particularly fast. But with some settings changes, Linux builds are tolerable (e.g., ~4 minutes for the Linux build of miniFLASH).
 
+## Creating the VM setup
+
 1. Create a Windows 10 Professional VM in Azure (I've had success with a Standard D4s v3 (4 vcpus, 16 GiB memory) instance)
 1. Install the latest version of MS Visual Studio 2017 Professional (don't need to exactly match the sub-version of VS2017 specified in the manual, even though IDEA will complain). You can get this here https://visualstudio.microsoft.com/vs/older-downloads/
 1. Disable Hyper-V within your VM by opening PowerShell and running `Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All`
@@ -22,3 +24,7 @@ vb.customize ["modifyvm", :id,
 VMAutoSuspendAfterBuild=False
 VMStopInsteadOfSuspend=False
 ```
+
+## Using the VM setup
+
+1. To reduce start/stop times for the Linux VM, we've turned of the auto-on/off feature. So, you need to manually run `vboxctrl -start` and `vboxctrl -stop` from wihin the IDEA shell to start/stop the Linux VM.
